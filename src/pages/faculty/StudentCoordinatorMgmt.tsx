@@ -1,0 +1,1 @@
+export { StudentCoordinatorMgmt as default } from "./ODGeneration";

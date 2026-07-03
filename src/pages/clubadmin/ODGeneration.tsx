@@ -1,0 +1,1 @@
+export { ODGeneration as default } from "../faculty/ODGeneration";
