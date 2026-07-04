@@ -412,7 +412,6 @@ export default function EventDetails() {
                     <BarcodeScanner
                       onScan={handleScan}
                       onClose={() => setScanning(false)}
-                      continuous={false}
                     />
                   ) : (
                     <>

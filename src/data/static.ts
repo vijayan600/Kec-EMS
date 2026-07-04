@@ -52,18 +52,21 @@ export interface Event {
   title: string;
   description: string;
   venue: string;
-  date: string;           // "DD-MM-YYYY"
-  time: string;           // "HH:MM AM/PM"
+  date: string;
+  time: string;
   maxParticipants: number;
   points: number;
   status: EventStatus;
-  bannerImage: string;    // filename in src/assets/events/
-  approved: boolean;      // club admin approval
+  bannerImage: string;
+  approved: boolean;
   createdBy: Role;
   tags: string[];
   chiefGuest?: string;
   prize?: string;
   registrationDeadline: string;
+  category?: string;
+  type?: string;
+  winners?: { name: string; position: string; team?: string }[];
 }
 
 export const EVENTS: Event[] = [
