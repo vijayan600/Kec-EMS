@@ -43,7 +43,7 @@ export default function Home() {
       {/* Events Section */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 20px" }}>
         {/* Tab Slider */}
-        <div className="tab-slider tab-slider-gold">
+        <div className="tab-slider tab-slider-gold tab-slider-royal">
           {TABS.map((tab) => (
             <button
               key={tab.value}
