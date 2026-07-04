@@ -12,7 +12,7 @@ export default function SCDashboard() {
       <div className="page-subtitle">Monitor event registrations and attendance</div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 14, marginBottom: 28 }}>
+      <div className="stats-grid">
         {[
           { icon: ClipboardList, label: "Total Events",  value: EVENTS.filter((e) => e.approved).length, color: "#10b981" },
           { icon: Users,         label: "Registrations", value: REGISTRATIONS.length,                    color: "#2563eb" },
@@ -29,15 +29,17 @@ export default function SCDashboard() {
                   justifyContent: "center",
                   width: 44,
                   height: 44,
-                  margin: "0 auto 10px",
+                  flexShrink: 0,
                   borderRadius: 12,
                   background: `${s.color}1a`,
                 }}
               >
                 <Icon size={22} color={s.color} strokeWidth={2} />
               </div>
-              <div className="stat-value" style={{ color: s.color }}>{s.value}</div>
-              <div className="stat-label">{s.label}</div>
+              <div>
+                <div className="stat-value" style={{ color: s.color }}>{s.value}</div>
+                <div className="stat-label">{s.label}</div>
+              </div>
             </div>
           );
         })}
