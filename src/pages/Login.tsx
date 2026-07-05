@@ -1,17 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { RoleOption } from "../components/Navbar";
-import shBg from "../assets/sh.jpeg";
-
-const ACCENT = "#2563eb"; // same unified color used in Navbar
-
-// Icon shown in the avatar circle, keyed by role path.
-const ROLE_ICONS: Record<string, string> = {
-  "/faculty": "👤",
-  "/clubadmin": "👤",
-  "/sc": "👤",
-  "/volunteer": "👤",
-};
 
 export default function Login() {
   const navigate = useNavigate();
@@ -23,9 +12,8 @@ export default function Login() {
   const safeRole: RoleOption = role ?? {
     label: "Member",
     path: "/",
-    color: ACCENT,
+    color: "#2563eb",
   };
-  const roleIcon = ROLE_ICONS[safeRole.path] ?? "👤";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,33 +43,9 @@ export default function Login() {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        background: "#050508",
+        background: "var(--bg-1)",
       }}
     >
-      {/* Lightly blurred background image */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `url(${shBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(1px)",
-          opacity: 0.85,
-          zIndex: 0,
-        }}
-      />
-
-      {/* Dark tint so the form stays readable */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "rgba(6, 6, 10, 0.35)",
-          zIndex: 1,
-        }}
-      />
-
       {/* Back button */}
       <button
         onClick={() => navigate("/")}
@@ -105,18 +69,14 @@ export default function Login() {
         ← Back
       </button>
 
-      {/* Login card */}
+      {/* Login card — Royal Blue Glassmorphism */}
       <div
-        className="modal-box"
+        className="login-card-royal"
         style={{
           position: "relative",
           zIndex: 2,
-          border: `1px solid ${ACCENT}40`,
-          boxShadow: `0 0 0 1px ${ACCENT}20, 0 32px 80px rgba(0,0,0,0.8)`,
           maxWidth: 420,
           width: "90%",
-          background: "#12121a",
-          borderRadius: 16,
           padding: 32,
         }}
       >
@@ -127,16 +87,24 @@ export default function Login() {
               width: 64,
               height: 64,
               borderRadius: "50%",
-              background: `${ACCENT}20`,
-              border: `2px solid ${ACCENT}50`,
+              background: "rgba(139,92,246,0.14)",
+              border: "1px solid rgba(139,92,246,0.4)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 28,
               margin: "0 auto 14px",
+              boxShadow: "0 8px 24px rgba(139,92,246,0.15)",
             }}
           >
-            {roleIcon}
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="#c4b5fd" strokeWidth="1.8" />
+              <path
+                d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"
+                stroke="#c4b5fd"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
           </div>
 
           <div
@@ -144,9 +112,9 @@ export default function Login() {
               display: "inline-block",
               padding: "4px 14px",
               borderRadius: 20,
-              background: `${ACCENT}15`,
-              border: `1px solid ${ACCENT}40`,
-              color: ACCENT,
+              background: "rgba(110,231,183,0.12)",
+              border: "1px solid rgba(139,92,246,0.35)",
+              color: "#c4b5fd",
               fontSize: 11,
               fontWeight: 700,
               textTransform: "uppercase",
@@ -171,14 +139,15 @@ export default function Login() {
         <div style={{ marginTop: 20 }}>
           <div className="form-group">
             <label>Email</label>
-            <input
-              type="email"
-              placeholder="your@kongu.edu"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={handleKeyDown}
-              autoFocus
-            />
+           <input
+           type={showPass ? "text" : "password"}
+           placeholder="••••••••"
+           className="input-admin-style"
+           value={password}
+           onChange={(e) => setPassword(e.target.value)}
+           onKeyDown={handleKeyDown}
+           style={{ paddingRight: 44 }}
+/>
           </div>
 
           <div className="form-group">
@@ -194,6 +163,8 @@ export default function Login() {
               />
               <button
                 onClick={() => setShowPass((v) => !v)}
+                type="button"
+                aria-label={showPass ? "Hide password" : "Show password"}
                 style={{
                   position: "absolute",
                   right: 12,
@@ -203,17 +174,39 @@ export default function Login() {
                   border: "none",
                   color: "var(--text-muted)",
                   cursor: "pointer",
-                  fontSize: 16,
                   padding: 0,
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
-                {showPass ? "🙈" : "👁️"}
+                {showPass ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M3 3l18 18M10.6 10.6a3 3 0 004.24 4.24M9.36 5.14A9.9 9.9 0 0112 5c5.5 0 9 4.5 10 7-.4 1.02-1.05 2.16-2 3.22M6.6 6.6C4.6 8 3.4 9.9 2 12c1.4 3 5 7 10 7 1.35 0 2.6-.28 3.72-.78"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.6" />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
 
           <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 20 }}>
-            <span style={{ fontSize: 13, color: ACCENT, cursor: "pointer", fontWeight: 500 }}>
+            <span style={{ fontSize: 13, color: "#c4b5fd", cursor: "pointer", fontWeight: 500 }}>
               Forgot Password?
             </span>
           </div>
@@ -221,12 +214,15 @@ export default function Login() {
           <button
             onClick={handleLogin}
             disabled={loading}
+            className="btn"
             style={{
               width: "100%",
               padding: "13px 0",
               borderRadius: 10,
-              border: "none",
-              background: loading ? `${ACCENT}80` : ACCENT,
+              border: "1px solid rgba(255,255,255,0.08)",
+              background: loading
+                ? "linear-gradient(90deg, rgba(110,231,183,0.1), rgba(139,92,246,0.1))"
+                : "linear-gradient(90deg, rgba(110,231,183,0.22), rgba(139,92,246,0.22))",
               color: "#fff",
               fontSize: 15,
               fontWeight: 700,
@@ -237,6 +233,7 @@ export default function Login() {
               alignItems: "center",
               justifyContent: "center",
               gap: 8,
+              boxShadow: "0 8px 22px rgba(139,92,246,0.1)",
             }}
           >
             {loading ? (

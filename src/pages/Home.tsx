@@ -4,17 +4,23 @@ import EventCard from "../components/EventCard";
 import { getEventsByStatus, EventStatus } from "../data/static";
 
 const TABS: { label: string; value: EventStatus }[] = [
-  { label: " Ongoing", value: "ongoing" },
-  { label: " Upcoming", value: "upcoming" },
-  { label: " Past", value: "past" },
+  { label: "Ongoing", value: "ongoing" },
+  { label: "Upcoming", value: "upcoming" },
+  { label: "Past", value: "past" },
 ];
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<EventStatus>("upcoming");
   const touchStartX = useRef(0);
+  const eventsRef = useRef<HTMLDivElement>(null);
 
   const events = getEventsByStatus(activeTab);
   const activeIndex = TABS.findIndex((t) => t.value === activeTab);
+
+  // Quick stats — pulled from your existing static data
+  const ongoingCount = getEventsByStatus("ongoing").length;
+  const upcomingCount = getEventsByStatus("upcoming").length;
+  const pastCount = getEventsByStatus("past").length;
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.changedTouches[0].clientX;
@@ -35,13 +41,51 @@ export default function Home() {
     }
   };
 
+  const scrollToEvents = () => {
+    eventsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
       <Navbar />
 
-      
+      {/* Hero Section — plain text on background, no card box */}
+      <div className="hero-plain">
+        <div className="hero-plain-college">
+          Kongu Engineering College (Autonomous)
+        </div>
+        <div className="hero-plain-accred">
+          Affiliated to Anna University &nbsp;|&nbsp; Accredited by NAAC with A++ Grade
+        </div>
+
+        <div className="hero-plain-title">Event Management System</div>
+        <div className="hero-plain-subtitle">
+          Your gateway to Kongu's vibrant student clubs &amp; activities
+        </div>
+
+        <div className="hero-stats">
+          <div className="hero-stat">
+            <div className="hero-stat-value">{ongoingCount}</div>
+            <div className="hero-stat-label">Ongoing</div>
+          </div>
+          <div className="hero-stat">
+            <div className="hero-stat-value">{upcomingCount}</div>
+            <div className="hero-stat-label">Upcoming</div>
+          </div>
+          <div className="hero-stat">
+            <div className="hero-stat-value">{pastCount}</div>
+            <div className="hero-stat-label">Past</div>
+          </div>
+        </div>
+
+        <div className="scroll-hint" onClick={scrollToEvents}>
+          <div className="scroll-hint-text">Scroll down to explore events</div>
+          <div className="scroll-hint-arrow">⌄</div>
+        </div>
+      </div>
+
       {/* Events Section */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "32px 20px" }}>
+      <div ref={eventsRef} style={{ maxWidth: 900, margin: "0 auto", padding: "32px 20px" }}>
         {/* Tab Slider */}
         <div className="tab-slider tab-slider-gold tab-slider-royal">
           {TABS.map((tab) => (

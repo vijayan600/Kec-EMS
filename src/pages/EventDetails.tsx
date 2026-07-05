@@ -113,11 +113,11 @@ export default function EventDetails() {
 
       <div className="event-container">
         {/* Back */}
-        <div className="event-back-row" style={{ marginBottom: 24 }}>
-          <button className="btn btn-outline btn-sm" onClick={() => navigate("/")}>
-            ← Back
-          </button>
-        </div>
+<div className="event-back-row" style={{ marginBottom: 24 }}>
+  <button className="btn btn-back-gold btn-sm" onClick={() => navigate("/")}>
+    ← Back
+  </button>
+</div>
 
         {/* Main layout */}
         <div className="event-grid">
