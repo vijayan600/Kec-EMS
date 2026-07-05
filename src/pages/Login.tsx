@@ -6,8 +6,6 @@ export default function Login() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Role comes from navigate("/login", { state: { role } }) in Navbar.
-  // If someone lands on /login directly, fall back to a generic role.
   const role = (location.state as { role?: RoleOption })?.role;
   const safeRole: RoleOption = role ?? {
     label: "Member",
@@ -25,7 +23,7 @@ export default function Login() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate(safeRole.path); // redirect into that role's dashboard
+      navigate(safeRole.path);
     }, 600);
   };
 
@@ -139,15 +137,15 @@ export default function Login() {
         <div style={{ marginTop: 20 }}>
           <div className="form-group">
             <label>Email</label>
-           <input
-           type={showPass ? "text" : "password"}
-           placeholder="••••••••"
-           className="input-admin-style"
-           value={password}
-           onChange={(e) => setPassword(e.target.value)}
-           onKeyDown={handleKeyDown}
-           style={{ paddingRight: 44 }}
-/>
+            <input
+              type="email"
+              placeholder="your@kongu.edu"
+              className="input-admin-style"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={handleKeyDown}
+              autoFocus
+            />
           </div>
 
           <div className="form-group">
@@ -156,6 +154,7 @@ export default function Login() {
               <input
                 type={showPass ? "text" : "password"}
                 placeholder="••••••••"
+                className="input-admin-style"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 onKeyDown={handleKeyDown}
