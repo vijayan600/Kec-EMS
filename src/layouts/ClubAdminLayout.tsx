@@ -3,14 +3,14 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Building2, LogOut } from "lucide-react";
 
 const NAV_ITEMS = [
-  { icon: "📊", label: "Dashboard",           path: "/clubadmin/dashboard" },
-  { icon: "✅", label: "Event Approval",      path: "/clubadmin/event-approval" },
-  { icon: "📋", label: "List Events",         path: "/clubadmin/events" },
-  { icon: "➕", label: "Create Event",        path: "/clubadmin/create-event" },
-  { icon: "📄", label: "OD Generation",       path: "/clubadmin/od-generation" },
-  { icon: "👨‍🎓", label: "Coordinator Mgmt",  path: "/clubadmin/coordinator-management" },
-  { icon: "📍", label: "Student Attendance",  path: "/clubadmin/attendance" },
-  { icon: "🏛️", label: "Edit Club Details",  path: "/clubadmin/club-details" },
+  { icon: "", label: "Dashboard",           path: "/clubadmin/dashboard" },
+  { icon: "", label: "Event Approval",      path: "/clubadmin/event-approval" },
+  { icon: "", label: "List Events",         path: "/clubadmin/events" },
+  { icon: "", label: "Create Event",        path: "/clubadmin/create-event" },
+  { icon: "", label: "OD Generation",       path: "/clubadmin/od-generation" },
+  { icon: "", label: "Coordinator Mgmt",  path: "/clubadmin/coordinator-management" },
+  { icon: "", label: "Student Attendance",  path: "/clubadmin/attendance" },
+  { icon: "", label: "Edit Club Details",  path: "/clubadmin/club-details" },
 ];
 
 export default function ClubAdminLayout() {

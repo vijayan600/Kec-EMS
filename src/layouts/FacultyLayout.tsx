@@ -3,13 +3,13 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { GraduationCap, LogOut } from "lucide-react";
 
 const NAV_ITEMS = [
-  { icon: "📊", label: "Dashboard",           path: "/faculty/dashboard" },
-  { icon: "📋", label: "List Events",         path: "/faculty/events" },
-  { icon: "➕", label: "Create Event",        path: "/faculty/create-event" },
-  { icon: "📄", label: "OD Generation",       path: "/faculty/od-generation" },
-  { icon: "👨‍🎓", label: "Coordinator Mgmt",  path: "/faculty/coordinator-management" },
-  { icon: "📍", label: "Student Attendance",  path: "/faculty/attendance" },
-  { icon: "🏛️", label: "Edit Club Details",  path: "/faculty/club-details" },
+  { icon: "", label: "Dashboard",           path: "/faculty/dashboard" },
+  { icon: "", label: "List Events",         path: "/faculty/events" },
+  { icon: "", label: "Create Event",        path: "/faculty/create-event" },
+  { icon: "", label: "OD Generation",       path: "/faculty/od-generation" },
+  { icon: "", label: "Coordinator Mgmt",  path: "/faculty/coordinator-management" },
+  { icon: "", label: "Student Attendance",  path: "/faculty/attendance" },
+  { icon: "", label: "Edit Club Details",  path: "/faculty/club-details" },
 ];
 
 export default function FacultyLayout() {

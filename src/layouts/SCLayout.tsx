@@ -3,9 +3,9 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { ClipboardList, LogOut } from "lucide-react";
 
 const SC_NAV = [
-  { icon: "📊", label: "Dashboard",          path: "/sc/dashboard" },
-  { icon: "📷", label: "Attendance Scanner", path: "/sc/scanner" },
-  { icon: "🙋", label: "Volunteer Mgmt",     path: "/sc/volunteers" },
+  { icon: "", label: "Dashboard",          path: "/sc/dashboard" },
+  { icon: "", label: "Attendance Scanner", path: "/sc/scanner" },
+  { icon: "", label: "Volunteer Mgmt",     path: "/sc/volunteers" },
 ];
 
 export default function SCLayout() {

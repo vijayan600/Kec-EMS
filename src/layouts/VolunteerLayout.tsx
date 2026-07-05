@@ -3,8 +3,8 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { LayoutDashboard, LogOut } from "lucide-react";
 
 const VOL_NAV = [
-  { icon: "📊", label: "Dashboard",          path: "/volunteer/dashboard" },
-  { icon: "📷", label: "Attendance Scanner", path: "/volunteer/scanner" },
+  { icon: "", label: "Dashboard",          path: "/volunteer/dashboard" },
+  { icon: "", label: "Attendance Scanner", path: "/volunteer/scanner" },
 ];
 
 export default function VolunteerLayout() {
